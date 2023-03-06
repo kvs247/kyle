@@ -17,6 +17,11 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
+
+import os
+import sys
+sys.path.append(os.getcwd())
+
 from models import Base
 target_metadata = Base.metadata
 
