@@ -11,5 +11,8 @@ class KyleItem(Base):
     id = Column(Integer(), primary_key=True)
     first_name = Column(String())
     last_name = Column(String())
+    height = Column(Float())
+    weight = Column(Float())
+    superpower = Column(String())
 
     
