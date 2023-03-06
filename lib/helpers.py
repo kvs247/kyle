@@ -7,3 +7,7 @@ def create_table(kyles):
         dtf.loc[len(dtf.index)] = [kyle.id, kyle.last_name, kyle.superpower]
     
     print(dtf.to_string(index=False))
+
+
+
+

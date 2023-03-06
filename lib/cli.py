@@ -35,3 +35,8 @@ if __name__ == '__main__':
     kyles = session.query(KyleItem)
     print(kyles.first())
     create_table(kyles)
+
+    kyle = None
+    while not kyle:
+        kyle_id = input('Please enter the ID of the Kyle you wish to purchase: ')
+        kyle = session.query(Store).filter(Store.id == store_id).one_or_none()
