@@ -1,14 +1,12 @@
 # from random import random, randrange, randint, choice as rc
 
-import ipdb
-
 import random
 
 from faker import Faker
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import KyleItem
+from models import KyleItem, KyleLog
 
 superpowers = [
     "Annoyance Inducement",
@@ -32,28 +30,34 @@ Session = sessionmaker(bind=engine)
 session = Session()
 fake = Faker()
 
-def make_kyle_items():
+if __name__ == '__main__':
     session.query(KyleItem).delete()
+    session.query(KyleLog).delete()
     session.commit()
 
-    kyle_items = [KyleItem(
+    kyle_items = []
+    for _ in range(15):
+        kyle_items.append(KyleItem(
         first_name = "Kyle",
         last_name = fake.last_name(),
         height = round(random.uniform(4.5, 6.5), 2),
         weight = round(random.uniform(100, 200), 1),
         superpower = random.choice(superpowers)
-    ) for k in range(15)]
+        ))
+
     session.add_all(kyle_items)
     session.commit()
 
-    return kyle_items
+    log_items = []
+    for kyle in kyle_items:
+        log_items.append(KyleLog(
+            kyle_id = kyle.id,
+            last_name = kyle.last_name,
+            date_of_entry = fake.date()
+        ))
 
-
-
-if __name__ == '__main__':
-    kyle_items = make_kyle_items()
-
-    ipdb.set_trace()
+    session.add_all(log_items)
+    session.commit()
 
 
 
