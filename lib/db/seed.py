@@ -56,8 +56,11 @@ if __name__ == '__main__':
             date_of_entry = fake.date()
         ))
 
+
+
     session.add_all(log_items)
     session.commit()
+
 
 
 

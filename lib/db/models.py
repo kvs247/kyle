@@ -44,4 +44,16 @@ class KyleLog(Base):
 
 
 
+    kyle_cart = relationship("KyleCart", backref("kyle_item"))
     
+
+
+class KyleCart(Base):
+    __tablename__ = "kyle_carts"
+
+    id = Column(Integer(), primary_key=True)
+
+    kyle_id = Column(Integer(), ForeignKey("kyle_items.id"))
+
+    def __repr__(self):
+        return f"Kyle Cart: {self.id}"
