@@ -17,10 +17,10 @@ class KyleItem(Base):
 
     def __repr__(self):
         return f"Kyle id: {self.id}" \
-            +f"Kyle first name: {self.first_name} duh dog" \
-            +f"kyle last name: {self.last_name}" \
-            +f"kyle height: {self.height}" \
-            +f"kyle heft: {self.weight}" \
-            +f"kyle superpower: {self.superpower}"
+            +f"\nKyle first name: {self.first_name} (duh dog)" \
+            +f"\nKyle last name: {self.last_name}" \
+            +f"\nKyle height: {self.height} Kyle feet" \
+            +f"\nKyle heft: {self.weight} Kyle lbs" \
+            +f"\nKyle superpower: {self.superpower}"
 
     
