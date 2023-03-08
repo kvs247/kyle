@@ -21,7 +21,7 @@ superpowers = [
     "Induce Tickling",
     "Offspring Detection",
     "Morph Hair Color",
-    "Fit All Clothes",
+    "Fit No Clothes",
     "Footprints Random Shape"
 ]
 
