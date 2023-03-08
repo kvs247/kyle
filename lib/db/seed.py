@@ -6,7 +6,7 @@ from faker import Faker
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import KyleItem, KyleLog
+from models import Base, KyleItem, KyleLog
 
 superpowers = [
     "Annoyance Inducement",
@@ -26,6 +26,8 @@ superpowers = [
 ]
 
 engine = create_engine('sqlite:///kyle.db')
+Base.metadata.create_all(engine)
+
 Session = sessionmaker(bind=engine)
 session = Session()
 fake = Faker()
