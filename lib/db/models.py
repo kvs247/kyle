@@ -16,7 +16,7 @@ class KyleItem(Base):
     superpower = Column(String())
 
     logs = relationship('KyleLog', backref="kyle_item")
-    kyle_cart = relationship("KyleCart", backref("kyle_item"))
+    kyle_cart = relationship("KyleCart", backref="kyle_item")
 
     def __repr__(self):
         return f"Kyle id: {self.id}" \
