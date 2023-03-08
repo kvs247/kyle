@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == '__main__':
 
-    engine = create_engine('sqlite:///kyle.db')
+    engine = create_engine('sqlite:///db/kyle.db')
     Base.metadata.create_all(engine)
     
     Session = sessionmaker(bind=engine)

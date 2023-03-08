@@ -6,7 +6,7 @@ from faker import Faker
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine('sqlite:///kyle.db')
+engine = create_engine('sqlite:///db/kyle.db')
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
@@ -36,7 +36,9 @@ if __name__ == '__main__':
     print(kyles.first())
     create_table(kyles)
 
-    kyle = None
-    while not kyle:
-        kyle_id = input('Please enter the ID of the Kyle you wish to purchase: ')
-        kyle = session.query(Store).filter(Store.id == store_id).one_or_none()
+    # kyle = None
+    # while not kyle:
+    #     kyle_id = input('Please enter the ID of the Kyle you wish to purchase: ')
+    #     kyle = session.query(Store).filter(Store.id == store_id).one_or_none()
+
+# this is my fancy comment
