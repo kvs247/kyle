@@ -42,10 +42,7 @@ if __name__ == '__main__':
     fill_kyle_cart(session)
 
         
-    #display information for the kyle selected
-    # print('Here is some more information on the Kyle you selected:')
-    # print(kyle)    
-    # print("Would you like to continue shopping for Kyles?")
+  
      
 
     

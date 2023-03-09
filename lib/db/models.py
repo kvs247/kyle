@@ -48,8 +48,7 @@ class KyleCart(Base):
     id = Column(Integer(), primary_key=True)
 
     kyle_id = Column(Integer(), ForeignKey("kyle_items.id"))
-
-    kyle_items = relationship('KyleItem')
+    # kyle_last_name = Column(String(), ForeignKey())
 
     def __repr__(self):
         return f"Kyle Cart: {self.id}"
