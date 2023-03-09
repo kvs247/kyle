@@ -44,11 +44,6 @@ if __name__ == '__main__':
     show_kyle_log(session)
 
     get_total(session)
-
-        
-  
-     
-
     
 
 

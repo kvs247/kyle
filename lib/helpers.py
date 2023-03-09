@@ -70,4 +70,4 @@ def get_total(session):
         total += 2
 
     print(table)
-    print(f'Fork over {total}, nerd')
+    print(f'Fork over ${total}, nerd')
