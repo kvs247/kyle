@@ -42,7 +42,7 @@ if __name__ == '__main__':
     fill_kyle_cart(session)
 
     show_kyle_log(session)
-  
+
     get_total(session)
     
 

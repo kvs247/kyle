@@ -31,6 +31,7 @@ class KyleLog(Base):
 
     id = Column(Integer(), primary_key=True)
     kyle_id = Column(Integer(), ForeignKey('kyle_items.id'))
+    first_name = Column(String())
     last_name = Column(String())
     date_of_entry = Column(String())
     date_of_adoption = Column(String())

@@ -55,6 +55,7 @@ if __name__ == '__main__':
     for kyle in kyle_items:
         log_items.append(KyleLog(
             kyle_id = kyle.id,
+            first_name = 'Kyle',
             last_name = kyle.last_name,
             date_of_entry = fake.date()
         ))
