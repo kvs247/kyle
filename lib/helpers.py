@@ -10,19 +10,19 @@ def create_table(kyles):
     table.field_names = ['id', 'name', 'superpower']
 
     for kyle in kyles:
-        table.add_row([kyle.id, kyle.last_name, kyle.superpower])
+        table.add_row([kyle.id, kyle.first_name + ' ' +  kyle.last_name, kyle.superpower])
     
     print(table)
 
 
 def fill_kyle_cart(session):
-    # session.query(KyleCart).delete()
+    session.query(KyleCart).delete()
     kyles = session.query(KyleItem)
     kyle_cart = session.query(KyleCart)
-    kyle_cart_all = kyle_cart.all()
-    kyle_cart_ids = [c.kyle_id for c in kyle_cart_all ]
     kyle_item_id = input("Enter ID of the Kyle you would like to adopt: ")
     while kyle_item_id:
+        kyle_cart_all = kyle_cart.all()
+        kyle_cart_ids = [c.kyle_id for c in kyle_cart_all ]
         kyle_item = session.query(KyleItem).filter(
             KyleItem.id == kyle_item_id).first()
         if kyle_item in kyles:
@@ -45,16 +45,29 @@ def fill_kyle_cart(session):
             elif yes_no.lower() in NO:
                 kyle_item_id = None
 
+def show_kyle_log(session):
+    yes_no = input('Would you like to see our Kyle log? (Y/n)')
+    if yes_no.lower() in YES:
+        kyle_log = session.query(KyleLog)
+        table = PrettyTable()
+        table.title = 'Kyles Log'
+        table.field_names = ['id', 'name', 'date of entry', 'date of sale']
 
+        for kyle in kyle_log:
+            table.add_row([kyle.id, kyle.first_name + ' ' +  kyle.last_name, kyle.date_of_entry, kyle.date_of_adoption])
+        
+        print(table)
 
+def get_total(session):
+    kyle_cart = session.query(KyleCart)
+    table = PrettyTable()
+    table.title = 'Cart Total'
+    table.field_names = ['id', 'kyle id']
+    total = 0
 
+    for kyle in kyle_cart:
+        table.add_row([kyle.id, kyle.kyle_id])
+        total += 2
 
-
-
-
-
-
-
-
-
-
+    print(table)
+    print(f'Fork over {total}, nerd')
