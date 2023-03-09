@@ -1,6 +1,6 @@
 from db.models import Base, KyleItem, KyleLog
 import random
-from helpers import create_table, fill_kyle_cart
+from helpers import create_table, fill_kyle_cart, show_kyle_log, get_total
 
 from faker import Faker
 from sqlalchemy import create_engine
@@ -40,6 +40,10 @@ if __name__ == '__main__':
     create_table(kyles)
     
     fill_kyle_cart(session)
+
+    show_kyle_log(session)
+
+    get_total(session)
 
         
   
