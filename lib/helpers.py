@@ -18,11 +18,11 @@ def create_table(kyles):
 def fill_kyle_cart(session):
     # session.query(KyleCart).delete()
     kyles = session.query(KyleItem)
-    kyle_cart = session.query(KyleCart)
-    kyle_cart_all = kyle_cart.all()
-    kyle_cart_ids = [c.kyle_id for c in kyle_cart_all ]
     kyle_item_id = input("Enter ID of the Kyle you would like to adopt: ")
     while kyle_item_id:
+        kyle_cart = session.query(KyleCart)
+        kyle_cart_all = kyle_cart.all()
+        kyle_cart_ids = [c.kyle_id for c in kyle_cart_all]
         kyle_item = session.query(KyleItem).filter(
             KyleItem.id == kyle_item_id).first()
         if kyle_item in kyles:
