@@ -39,7 +39,12 @@ def fill_kyle_cart(session):
                 KyleLog.kyle_id == int(kyle_item_id)
                 ).first().date_of_adoption = now
             # add Kyle to cart
-            new_cart_item = KyleCart(kyle_id=kyle_item_id)
+            new_cart_item = KyleCart(
+                kyle_id = kyle_item_id,
+                first_name = kyle_item.first_name,
+                last_name = kyle_item.last_name,
+                superpower = kyle_item.superpower
+                )
             session.add(new_cart_item)
             # remove Kyle from List
             session.delete(kyle_item)
@@ -61,7 +66,7 @@ def fill_kyle_cart(session):
                 kyle_item_id = None
 
 def show_kyle_log(session):
-    yes_no = input('Would you like to see our Kyle log? (Y/n)')
+    yes_no = input('Would you like to see our Kyle log? (Y/n) ')
     if yes_no.lower() in YES:
         kyle_log = session.query(KyleLog)
         table = PrettyTable()
@@ -74,14 +79,20 @@ def show_kyle_log(session):
         print(table)
 
 def get_total(session):
+    input('Press ENTER to checkout.')
     kyle_cart = session.query(KyleCart)
     table = PrettyTable()
     table.title = 'Cart Total'
-    table.field_names = ['id', 'kyle id']
+    table.field_names = ['id', 'kyle id', 'name', 'superpower']
     total = 0
 
     for kyle in kyle_cart:
-        table.add_row([kyle.id, kyle.kyle_id])
+        table.add_row([
+            kyle.id, 
+            kyle.kyle_id, 
+            f'{kyle.first_name} {kyle.last_name}',
+            kyle.superpower
+            ])
         total += 2
 
     print(table)

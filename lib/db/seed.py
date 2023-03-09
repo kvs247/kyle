@@ -58,11 +58,11 @@ if __name__ == '__main__':
     kyle_items = []
     for _ in range(31):
         kyle_items.append(KyleItem(
-        first_name = "Kyle",
-        last_name = fake.last_name(),
-        height = round(random.uniform(4.5, 6.5), 2),
-        weight = round(random.uniform(100, 200), 1),
-        superpower = random.choice(superpowers)
+            first_name = "Kyle",
+            last_name = fake.last_name(),
+            height = round(random.uniform(4.5, 6.5), 2),
+            weight = round(random.uniform(100, 200), 1),
+            superpower = random.choice(superpowers)
         ))
 
     session.add_all(kyle_items)
