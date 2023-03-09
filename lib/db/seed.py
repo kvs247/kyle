@@ -6,7 +6,7 @@ from faker import Faker
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from models import Base, KyleItem, KyleLog
+from models import Base, KyleItem, KyleLog, KyleCart
 
 superpowers = [
     "Annoyance Inducement",
@@ -35,6 +35,7 @@ fake = Faker()
 if __name__ == '__main__':
     session.query(KyleItem).delete()
     session.query(KyleLog).delete()
+    session.query(KyleCart).delete()
     session.commit()
 
     kyle_items = []
