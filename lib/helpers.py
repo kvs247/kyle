@@ -1,6 +1,9 @@
 from db.models import Base, KyleItem, KyleLog, KyleCart
 from prettytable import PrettyTable
 
+YES = ['y', 'ye', 'yes', 'sure', 'i guess']
+NO = ['n', 'no']
+
 def create_table(kyles):
     table = PrettyTable()
     table.title = 'Kyles Up For Adoption'
@@ -13,17 +16,27 @@ def create_table(kyles):
 
 
 def fill_kyle_cart(session, kyle):
+    session.query(KyleCart).delete()
     kyles = session.query(KyleItem)
-    kyle_cart = KyleCart()
-    kyle_item_id = input("enter id")
+    kyle_item_id = input("Enter ID of the Kyle you would like to adopt: ")
     while kyle_item_id:
         kyle_item = session.query(KyleItem).filter(
             KyleItem.id == kyle_item_id).first()
-        print(kyle_item)
         if kyle_item in kyles:
-            kyle_cart.kyle_items.append(kyle_item)
+            new_cart_item = KyleCart(kyle_id=kyle_item_id)
+            session.add(new_cart_item)
+            session.commit()
         else:
-            print("oh no")
+            kyle_item_id = input("We demand you enter a valid ID, motherfucker: ")
+            continue
+
+        yes_no = None
+        while yes_no not in YES + NO:
+            yes_no = input('Would you like to consider subjugating another Kyle? (Y/n) ')
+            if yes_no.lower() in YES:
+                kyle_item_id = input('Please enter the ID of your next item: ')
+            elif yes_no.lower() in NO:
+                kyle_item_id = None
 
 
 
