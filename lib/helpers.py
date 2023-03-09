@@ -17,7 +17,7 @@ def fill_kyle_cart(session, kyle):
         kyle_item = session.query(KyleItem).filter(
             KyleItem.id == kyle_item_id).first()
         print(kyle_item)
-        if kyle_item in KyleItem.kyle_items:
+        if kyle_item in KyleItem:
             kyle_cart.kyle_items.append(kyle_item)
         else:
             print("oh no")
