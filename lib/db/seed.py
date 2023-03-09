@@ -22,7 +22,24 @@ superpowers = [
     "Offspring Detection",
     "Morph Hair Color",
     "Fit No Clothes",
-    "Footprints Random Shape"
+    "Footprints Random Shape",
+    "See Through Glass [NJ]",
+    "Summon Gaggle of Geese [TH]",
+    "Invisble While Motionless [TH]",
+    "See Contents of Empty Box [SP]",
+    "Win Skribbl (if Steve & Nick absent) [BA]",
+    "Eat 1 More Piece of Sushi Than Everyone Else [NJ]",
+    "Lose/Regrow All Teeth (ALL teeth) [NJ]",
+    "Walk on Legos Without Pain [NJ]",
+    "Live Longer Than Louis [TH]",
+    "Morph Into Danny Devito [BA]",
+    "Fly 2 Inches Off the Ground [TH]",
+    "Is Very Handsome [NJ]",
+    "Is Really Really Smart [TH]",
+    "Fix Games With Breath [NJ]",
+    "Win Any Argument But Singing [BA]",
+    "Induce Sneezing [AM]",
+    "Fly Incredibly Slow [AM]"
 ]
 
 engine = create_engine('sqlite:///kyle.db')
@@ -39,13 +56,13 @@ if __name__ == '__main__':
     session.commit()
 
     kyle_items = []
-    for _ in range(15):
+    for _ in range(31):
         kyle_items.append(KyleItem(
-        first_name = "Kyle",
-        last_name = fake.last_name(),
-        height = round(random.uniform(4.5, 6.5), 2),
-        weight = round(random.uniform(100, 200), 1),
-        superpower = random.choice(superpowers)
+            first_name = "Kyle",
+            last_name = fake.last_name(),
+            height = round(random.uniform(4.5, 6.5), 2),
+            weight = round(random.uniform(100, 200), 1),
+            superpower = random.choice(superpowers)
         ))
 
     session.add_all(kyle_items)

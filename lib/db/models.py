@@ -47,11 +47,10 @@ class KyleCart(Base):
     __tablename__ = "kyle_carts"
 
     id = Column(Integer(), primary_key=True)
-
     kyle_id = Column(Integer(), ForeignKey("kyle_items.id"))
-    # kyle_last_name = Column(String(), ForeignKey())
+    first_name = Column(String())
+    last_name = Column(String())
+    superpower = Column(String())
 
     def __repr__(self):
         return f"Kyle Cart: {self.id}"
-
-    
