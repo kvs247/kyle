@@ -39,7 +39,7 @@ if __name__ == '__main__':
    
     create_table(kyles)
     
-    fill_kyle_cart(session, "kyle")
+    fill_kyle_cart(session)
 
         
     #display information for the kyle selected
