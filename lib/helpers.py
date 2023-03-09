@@ -1,5 +1,6 @@
 from db.models import Base, KyleItem, KyleLog, KyleCart
 from prettytable import PrettyTable
+import datetime
 
 YES = ['y', 'ye', 'yes', 'sure', 'i guess']
 NO = ['n', 'no']
@@ -26,9 +27,17 @@ def fill_kyle_cart(session):
         kyle_item = session.query(KyleItem).filter(
             KyleItem.id == kyle_item_id).first()
         if kyle_item in kyles:
+            now = datetime.date.today()
+            # update Kyle Log
+            session.query(KyleLog).filter(
+                KyleLog.kyle_id == int(kyle_item_id)
+                ).first().date_of_adoption = now
+            # add Kyle to cart
             new_cart_item = KyleCart(kyle_id=kyle_item_id)
             session.add(new_cart_item)
+            # remove Kyle from List
             session.delete(kyle_item)
+
             session.commit()
         elif int(kyle_item_id) in kyle_cart_ids:
            kyle_item_id = input(f"You've already added Kyle number {kyle_item_id} to your cart: ")
