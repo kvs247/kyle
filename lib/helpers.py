@@ -1,23 +1,26 @@
-import pandas as pd
 from db.models import Base, KyleItem, KyleLog, KyleCart
+from prettytable import PrettyTable
 
 def create_table(kyles):
-    dtf = pd.DataFrame(columns=['id', 'name', 'superpower'])
+    table = PrettyTable()
+    table.title = 'Kyles Up For Adoption'
+    table.field_names = ['id', 'name', 'superpower']
 
     for kyle in kyles:
-        dtf.loc[len(dtf.index)] = [kyle.id, kyle.last_name, kyle.superpower]
+        table.add_row([kyle.id, kyle.last_name, kyle.superpower])
     
-    print(dtf.to_string(index=False))
+    print(table)
 
 
 def fill_kyle_cart(session, kyle):
+    kyles = session.query(KyleItem)
     kyle_cart = KyleCart()
     kyle_item_id = input("enter id")
     while kyle_item_id:
         kyle_item = session.query(KyleItem).filter(
             KyleItem.id == kyle_item_id).first()
         print(kyle_item)
-        if kyle_item in KyleItem:
+        if kyle_item in kyles:
             kyle_cart.kyle_items.append(kyle_item)
         else:
             print("oh no")
