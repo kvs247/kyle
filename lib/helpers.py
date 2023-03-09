@@ -8,10 +8,16 @@ NO = ['n', 'no']
 def create_table(kyles):
     table = PrettyTable()
     table.title = 'Kyles Up For Adoption'
-    table.field_names = ['id', 'name', 'superpower']
+    table.field_names = ['id', 'name', 'superpower', 'height (Kyles)', 'weight (Kyle units)']
 
     for kyle in kyles:
-        table.add_row([kyle.id, kyle.first_name + ' ' +  kyle.last_name, kyle.superpower])
+        table.add_row([
+            kyle.id, 
+            kyle.first_name + ' ' +  kyle.last_name, 
+            kyle.superpower,
+            kyle.height,
+            kyle.weight
+            ])
     
     print(table)
 
