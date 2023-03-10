@@ -39,7 +39,8 @@ superpowers = [
     "Fix Games With Breath [NJ]",
     "Win Any Argument But Singing [BA]",
     "Induce Sneezing [AM]",
-    "Fly Incredibly Slow [AM]"
+    "Fly Incredibly Slow [AM]",
+    "Teleport To McD With Broken Ice Cream Machine [OT]"
 ]
 
 engine = create_engine('sqlite:///kyle.db')
